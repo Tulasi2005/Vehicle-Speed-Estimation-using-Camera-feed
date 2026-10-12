@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login | Vehicle Speed Estimation</title>
+
+<style>
+/* ===== BACKGROUND IMAGE (ADDED) ===== */
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background-image: url("{{ url_for('static', filename='background.jpg') }}");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: -1;
+}
+
+/* Header */
+.header {
+    width: 100%;
+    height: 80px;
+    background: white;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+.logo {
+    height: 70px;
+    margin-top: 5px;
+}
+
+/* Center card */
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+}
+
+.card {
+    width: 950px;
+    min-height: 520px;
+    display: flex;
+    background: rgba(255,255,255,0.95);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+}
+
+/* Left section */
+.left {
+    width: 55%;
+    padding: 45px;
+    color: white;
+    background: linear-gradient(135deg, #d2b48c, #c19a6b);
+    border-top-right-radius: 220px;
+    border-bottom-right-radius: 220px;
+}
+
+.left h2 {
+    font-size: 30px;
+    margin-bottom: 16px;
+}
+
+.left p {
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+
+.left ul {
+    margin-top: 16px;
+    padding-left: 18px;
+}
+
+.left ul li {
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+
+/* Right section */
+.right {
+    width: 45%;
+    padding: 45px;
+    background: white;
+}
+
+.right h2 {
+    text-align: center;
+    color: #8b5a2b;
+    margin-bottom: 24px;
+    font-size: 26px;
+}
+
+/* Inputs */
+label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+}
+
+input {
+    width: 100%;
+    padding: 12px 16px;
+    margin: 8px 0 18px;
+    border-radius: 28px;
+    border: 1px solid #ddd;
+    font-size: 13px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #8b5a2b;
+}
+
+/* Button */
+.btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 28px;
+    border: none;
+    background: linear-gradient(135deg, #d2b48c, #c19a6b);
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Links */
+.links {
+    text-align: center;
+    margin-top: 14px;
+    font-size: 13px;
+}
+
+.links a {
+    color: #8b5a2b;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Footer content */
+.guide {
+    text-align: center;
+    font-size: 16px;
+    color: #8b5a2b;
+    margin-top: 28px;
+    font-weight: 600;
+}
+
+.separator {
+    width: 60%;
+    margin: 10px auto 8px;
+    border-top: 2px solid #8b5a2b;
+}
+
+.developers {
+    text-align: center;
+    font-size: 15px;
+    color: #555;
+}
+
+.developers h4 {
+    font-size: 18px;
+    color: #8b5a2b;
+    margin-bottom: 8px;
+}
+
+.developers p {
+    margin: 3px 0;
+    font-weight: 600;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <img src="{{ url_for('static', filename='logo.jpeg') }}" class="logo" alt="College Logo">
+</div>
+
+<div class="main">
+<div class="card">
+
+<div class="left">
+    <h2>Welcome to Vehicle Speed Estimation</h2>
+
+    <p>
+        Estimate vehicle speed in real time using camera-based computer vision
+        for intelligent traffic monitoring and smart city solutions.
+    </p>
+
+    <p>
+        This system detects and tracks vehicles from traffic video footage
+        and calculates their speed by analyzing movement across consecutive
+        frames.
+    </p>
+
+    <p>
+        The application supports secure user access, video upload, and live
+        visualization of processed results.
+    </p>
+
+    <ul>
+        <li>Camera-based vehicle detection and tracking</li>
+        <li>Accurate real-time speed estimation</li>
+        <li>Smart traffic monitoring and enforcement</li>
+    </ul>
+</div>
+
+<div class="right">
+    <h2>Sign In</h2>
+
+    {% if error %}
+        <p style="color:red;text-align:center;">{{ error }}</p>
+    {% endif %}
+
+    <form method="POST">
+        <label>Username</label>
+        <input type="text" name="username" required>
+
+        <label>Password</label>
+        <input type="password" name="password" required>
+
+        <button class="btn">Sign In</button>
+    </form>
+
+    <div class="links">
+        <p>New user? <a href="/register">Register</a></p>
+    </div>
+
+    <div class="guide">Department: CSE – AIML</div>
+    <div class="guide" style="font-size:15px; margin-top:6px;">
+        Guide: Dr. C. Hari Kishan
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="developers">
+        <h4>Developed By</h4>
+        <p>K. Tulasi</p>
+        <p>S. Bhavya Sri</p>
+        <p>S. Sumedha Sarvani</p>
+        <p>M. Vasanthi</p>
+    </div>
+</div>
+
+</div>
+</div>
+
+</body>
+</html>

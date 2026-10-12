@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Traffic Results</title>
+
+<style>
+body{
+    margin:0;
+    font-family:"Segoe UI";
+    background-image:url("{{ url_for('static', filename='background.jpg') }}");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+}
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.45);
+    z-index:-1;
+}
+
+.page-title{
+    text-align:center;
+    padding:25px;
+    color:white;
+    background:linear-gradient(135deg,#d2b48c,#c19a6b);
+}
+
+.main{padding:40px;}
+
+.video-container{
+    display:flex;
+    flex-direction:column;
+    gap:45px;
+    align-items:center;
+}
+
+.video-card{
+    width:85%;
+    max-width:900px;
+    background:rgba(255,255,255,0.95);
+    border-radius:18px;
+    box-shadow:0 18px 35px rgba(0,0,0,.25);
+}
+
+.video-card h3{
+    text-align:center;
+    padding:16px;
+    color:white;
+    background:linear-gradient(135deg,#d2b48c,#c19a6b);
+}
+
+.video-card img{
+    width:100%;
+    height:420px;
+    object-fit:cover;
+}
+
+.actions{text-align:center;margin:45px;}
+
+.btn{
+    padding:14px 36px;
+    border-radius:28px;
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    background:linear-gradient(135deg,#d2b48c,#c19a6b);
+}
+</style>
+</head>
+
+<body>
+
+<div class="page-title">
+<h1>🚦 Traffic Speed Detection Results</h1>
+</div>
+
+<div class="main">
+<div class="video-container">
+<div class="video-card"><h3>Video 1</h3><img src="/video_feed/0"></div>
+<div class="video-card"><h3>Video 2</h3><img src="/video_feed/1"></div>
+<div class="video-card"><h3>Video 3</h3><img src="/video_feed/2"></div>
+</div>
+</div>
+
+<div class="actions">
+<a href="/upload" class="btn">Upload New</a>
+<a href="/logout" class="btn">Logout</a>
+</div>
+
+</body>
+</html>
+
+
+
